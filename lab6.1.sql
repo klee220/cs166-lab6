@@ -1,10 +1,12 @@
-SELECT COUNT(c.sid)
-FROM catalog c
-GROUP BY c.sid;
+SELECT s.sname, COUNT(c.sid)
+FROM catalog c, suppliers s
+WHERE s.sid = c.sid
+GROUP BY s.sname;
 
-SELECT COUNT(c.sid)
-FROM catalog c
-GROUP BY c.sid HAVING count(c.sid)>2;
+SELECT s.sname, COUNT(c.sid)
+FROM catalog c, suppliers s
+WHERE s.sid = c.sid
+GROUP BY s.sname HAVING count(c.sid)>2;
 
 (SELECT s.sname, COUNT(c.sid)
 FROM suppliers s, catalog c, parts p
